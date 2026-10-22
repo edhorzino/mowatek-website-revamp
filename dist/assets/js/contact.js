@@ -3,7 +3,10 @@
   const form = document.getElementById('enquiryForm');
   if (!form) return;
   const $ = (id) => document.getElementById(id);
-  const getEndpoint = () => (form.dataset.endpoint || '').trim();
+  
+  // Hardcoded to ensure the Vercel serverless function is always hit
+  const getEndpoint = () => '/api/quote';
+  
   const minMs = (Number(form.dataset.minSeconds) || 0) * 1000;
   const loadedAt = Date.now();
   const btn = $('submitBtn'), lbl = btn.querySelector('.lbl'), errBox = $('form-error'), errText = $('form-error-text'), ok = $('form-success');
