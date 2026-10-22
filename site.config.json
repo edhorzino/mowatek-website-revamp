@@ -1,0 +1,52 @@
+{
+  "_readme": "Fill in the empty values, then run `npm run build`. Empty values are never rendered on the site. Nothing here should contain secrets: the form endpoint is a public URL.",
+  "siteUrl": "",
+  "companyName": "Mowatek Nigeria Limited",
+  "tagline": "Water & Wastewater Engineering",
+  "foundingYear": 1983,
+  "contact": {
+    "email": "",
+    "phone": "",
+    "whatsapp": "",
+    "whatsappMessage": "Hello Mowatek, I would like to make an enquiry.",
+    "addressLines": [],
+    "openingHours": "",
+    "rcNumber": ""
+  },
+  "social": {
+    "linkedin": "",
+    "facebook": "",
+    "instagram": "",
+    "x": ""
+  },
+  "form": {
+    "_note": "Paste your Formspree (https://formspree.io/f/xxxxxxxx) or Web3Forms-compatible JSON endpoint here. Until set, the form shows an honest error instead of pretending to send.",
+    "endpoint": "",
+    "minSecondsBeforeSubmit": 3,
+    "hiddenFields": {}
+  },
+  "heroVideo": {
+    "_note": "Optional. Put an mp4/webm in public/assets/video and set paths to replace the photo slideshow.",
+    "mp4": "",
+    "webm": "",
+    "poster": ""
+  },
+  "analytics": {
+    "_note": "Optional privacy-friendly analytics script URL (e.g. Plausible/Umami). Leave empty for none.",
+    "scriptSrc": "",
+    "domain": ""
+  },
+  "partners": [
+    {
+      "name": "Jet Incorp",
+      "url": "https://jetincorp.com",
+      "logo": ""
+    },
+    {
+      "name": "NOV",
+      "url": "https://nov.com",
+      "logo": ""
+    }
+  ],
+  "testimonials": []
+}

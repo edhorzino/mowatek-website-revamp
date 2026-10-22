@@ -1,0 +1,32 @@
+# Apache hosting (cPanel etc.). Ignored by other servers.
+ErrorDocument 404 /404.html
+DirectoryIndex index.html
+<IfModule mod_headers.c>
+  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; media-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set X-Frame-Options "DENY"
+</IfModule>
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteRule ^water-treatment\.html$ /water-treatment/ [R=301,L]
+RewriteRule ^waste-water-sewage-treatment\.html$ /waste-water-sewage-treatment/ [R=301,L]
+RewriteRule ^solid-waste-management\.html$ /solid-waste-management/ [R=301,L]
+RewriteRule ^consulting\.html$ /consulting/ [R=301,L]
+RewriteRule ^training\.html$ /training/ [R=301,L]
+RewriteRule ^supply-installation-maintenance\.html$ /supply-installation-maintenance/ [R=301,L]
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^consultancy-services/?$ /consulting/ [R=301,L]
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
+</IfModule>
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
