@@ -21,7 +21,7 @@
   },
   "form": {
     "_note": "Paste your Formspree (https://formspree.io/f/xxxxxxxx) or Web3Forms-compatible JSON endpoint here. Until set, the form shows an honest error instead of pretending to send.",
-    "endpoint": "",
+    "endpoint": "/api/quote",
     "minSecondsBeforeSubmit": 3,
     "hiddenFields": {}
   },
