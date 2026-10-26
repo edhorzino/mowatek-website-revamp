@@ -131,7 +131,7 @@ export function footer(ctx) {
   return `<footer class="footer"><div class="container">
 <div class="footer-grid">
 <div><div class="footer-logo"><img src="${ctx.href('assets/img/logo-360.webp')}" width="360" height="131" loading="lazy" alt="${esc(config.companyName)}"></div>
-<p>Engineering and technical services focused on water treatment, wastewater management and environmental solutions.</p>${soc.length ? `<p class="social">${soc.join(' · ')}</p>` : ''}</div>
+<p>Engineering, procurement, construction, operations and maintenance for water and wastewater treatment.</p>${soc.length ? `<p class="social">${soc.join(' · ')}</p>` : ''}</div>
 <div><h3>Services</h3><ul class="flinks">${services.map((s) => `<li><a href="${ctx.href(s.slug + '/')}">${esc(s.nav)}</a></li>`).join('')}</ul></div>
 <div><h3>Company</h3><ul class="flinks"><li><a href="${ctx.href('about/')}">About</a></li><li><a href="${ctx.href('projects/')}">Projects</a></li><li><a href="${ctx.href('faq/')}">FAQ</a></li><li><a href="${ctx.href('contact/')}">Contact</a></li><li><a href="${ctx.href('privacy/')}">Privacy</a></li></ul></div>
 <div><h3>Get in touch</h3>${items.length ? `<ul class="fcontact">${items.join('')}</ul>` : ''}<a class="btn btn--primary btn--sm" href="${quoteHref(ctx)}">Request a quote</a></div>
@@ -173,7 +173,7 @@ export function faqList(items = faqs) {
   return `<div class="faq">${items.map(([q, a]) => `<details class="reveal"><summary>${esc(q)}${icon('down', 'ico chev')}</summary><div class="faq-a"><p>${esc(a)}</p></div></details>`).join('')}</div>`;
 }
 
-export function ctaBand(ctx, { title = 'Let’s talk about the challenge you’re trying to solve.', text = 'Tell us about your water, wastewater or environmental engineering requirements and the team will follow up.', slug = '' } = {}) {
+export function ctaBand(ctx, { title = 'Let’s talk about the challenge you’re trying to solve.', text = 'Tell us about your water and wastewater treatment requirements and the team will follow up.', slug = '' } = {}) {
   const { phone, whatsapp } = ctx.contacts;
   return `<section class="cta"><div class="container"><div class="cta-panel reveal"><div><span class="eyebrow">Have a project in mind?</span><h2>${title}</h2><p>${esc(text)}</p></div>
 <div class="cta-actions">${btn('Request a quote', quoteHref(ctx, slug), 'primary', 'up')}${phone ? btn('Call us', phone.href, 'outline', 'phone') : ''}${whatsapp ? `<a class="btn btn--outline" href="${whatsapp.href}" target="_blank" rel="noopener noreferrer">WhatsApp${icon('chat')}</a>` : ''}</div></div></div></section>`;
@@ -185,12 +185,20 @@ export function partners(ctx) {
   const reps = Math.max(2, Math.ceil(3000 / (list.length * 260)));
   const item = (p, hidden) => {
     const logoFile = p.logo && existsSync(new URL(`../public/assets/partners/${p.logo}`, import.meta.url));
-    const inner = logoFile ? `<img src="${ctx.href('assets/partners/' + p.logo)}" alt="${hidden ? '' : esc(p.name) + ' logo'}" height="40" loading="lazy">` : `<span class="partner-name">${esc(p.name)}</span>`;
+    const inner = logoFile ? `<img src="${ctx.href('assets/partners/' + p.logo)}" alt="${hidden ? '' : esc(p.name) + ' logo'}" width="160" height="40" loading="lazy">` : `<span class="partner-name">${esc(p.name)}</span>`;
     return `<li><a class="partner" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer"${hidden ? ' tabindex="-1" aria-hidden="true"' : ` aria-label="${esc(p.name)} (opens ${esc(p.url.replace(/^https?:\/\//, ''))} in a new tab)"`}>${inner}</a></li>`;
   };
-  const group = (hidden) => `<ul class="marquee-group"${hidden ? ' aria-hidden="true"' : ''}>${Array.from({ length: reps }, () => list.map((p) => item(p, hidden)).join('')).join('')}</ul>`;
+  const group = (hidden) => `<ul class="marquee-group"${hidden ? ' aria-hidden="true"' : ''}>${Array.from({ length: reps }, (_, i) => list.map((p) => item(p, hidden || i > 0)).join('')).join('')}</ul>`;
   return `<section class="partners" aria-labelledby="partners-h"><div class="container"><h2 id="partners-h" class="partners-title">Our partners</h2></div>
 <div class="marquee"><div class="marquee-track">${group(false)}${group(true)}</div></div></section>`;
+}
+
+export function clients(ctx) {
+  const list = (ctx.config.clients || []).filter((c) => c.name && c.logo);
+  if (!list.length) return '';
+  return `<section class="partners clients" aria-labelledby="clients-h"><div class="container"><h2 id="clients-h" class="partners-title">Our clients</h2>
+<div class="client-controls" hidden><button type="button" class="btn btn--ghost btn--sm" data-client-prev aria-label="Previous client logos" aria-controls="client-track">${icon('left')}</button><button type="button" class="btn btn--ghost btn--sm" data-client-pause aria-pressed="false">Pause movement</button><button type="button" class="btn btn--ghost btn--sm" data-client-next aria-label="Next client logos" aria-controls="client-track">${icon('right')}</button></div>
+<ul class="client-track" id="client-track" tabindex="0" aria-label="Client logos; scroll to view more">${list.map((c) => `<li><div class="partner client-logo"><img src="${ctx.href('assets/clients/' + c.logo)}" width="180" height="88" loading="lazy" alt="${esc(c.name)}"></div></li>`).join('')}</ul></div></section>`;
 }
 
 export function testimonials(ctx) {
@@ -212,7 +220,7 @@ export function processBand(ctx) {
 
 export function orgJsonLd(ctx) {
   const { config, contacts } = ctx;
-  const o = { '@context': 'https://schema.org', '@type': 'Organization', name: config.companyName, foundingDate: String(config.foundingYear), description: 'Water, wastewater and environmental engineering and technical services in Nigeria.', areaServed: 'NG' };
+  const o = { '@context': 'https://schema.org', '@type': 'Organization', name: config.companyName, foundingDate: String(config.foundingYear), description: 'Water and wastewater treatment, procurement, maintenance, consulting and training in Nigeria.', areaServed: 'NG' };
   if (config.siteUrl) { o.url = config.siteUrl; o.logo = config.siteUrl.replace(/\/$/, '') + '/assets/img/mark-512.png'; }
   if (contacts.email) o.email = config.contact.email;
   if (contacts.phone) o.telephone = config.contact.phone;

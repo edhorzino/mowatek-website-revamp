@@ -2,10 +2,15 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, dirname, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { vercelConfiguration } from '../src/hosting.mjs';
 const DIST = join(fileURLToPath(new URL('..', import.meta.url)), 'dist');
 const walk = (d) => readdirSync(d).flatMap((n) => { const p = join(d, n); return statSync(p).isDirectory() ? walk(p) : [p]; });
 const files = walk(DIST), htmls = files.filter((f) => f.endsWith('.html'));
 const errs = [], titles = new Map(), descs = new Map();
+const config = JSON.parse(readFileSync(new URL('../site.config.json', import.meta.url), 'utf8'));
+const deployedConfig = JSON.parse(readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'));
+if (JSON.stringify(deployedConfig) !== JSON.stringify(vercelConfiguration(config))) errs.push('vercel.json is stale: run npm run configure:hosting.');
+if (!existsSync(join(DIST, 'sitemap.xml'))) errs.push('Missing sitemap.xml.');
 const err = (f, m) => errs.push(`${relative(DIST, f)}: ${m}`);
 const ids = {}; for (const f of htmls) ids[f] = new Set([...readFileSync(f, 'utf8').matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
 const resolveFile = (from, ref, root404) => {
@@ -19,6 +24,9 @@ for (const f of htmls) {
   const h = readFileSync(f, 'utf8'), is404 = f.endsWith('404.html');
   const t = (h.match(/<title>(.*?)<\/title>/s) || [])[1], d = (h.match(/name="description" content="([^"]*)"/) || [])[1];
   if (!t) err(f, 'missing <title>'); if (!d) err(f, 'missing meta description');
+  if (!is404 && !/<link rel="canonical" href="https:\/\//.test(h)) err(f, 'missing absolute canonical URL');
+  if (!is404 && !/<meta property="og:image" content="https:\/\//.test(h)) err(f, 'missing absolute social preview image');
+  if (/six service|six areas|Wastewater &amp; Sewage|Environmental &amp; Solid Waste|before launch/i.test(h)) err(f, 'outdated launch or service copy');
   if (t && titles.has(t)) err(f, `duplicate title with ${titles.get(t)}`); titles.set(t, relative(DIST, f));
   if (d && descs.has(d)) err(f, `duplicate description with ${descs.get(d)}`); descs.set(d, relative(DIST, f));
   if ((h.match(/<h1[\s>]/g) || []).length !== 1) err(f, 'page must have exactly one <h1>');

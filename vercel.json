@@ -1,0 +1,155 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/quote.js": {
+      "maxDuration": 30
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; media-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.mowatek.com"
+        }
+      ],
+      "destination": "https://mowatek.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/water-treatment.html",
+      "destination": "/water-treatment/",
+      "permanent": true
+    },
+    {
+      "source": "/waste-water-sewage-treatment.html",
+      "destination": "/wastewater-effluent-treatment/",
+      "permanent": true
+    },
+    {
+      "source": "/waste-water-sewage-treatment",
+      "destination": "/wastewater-effluent-treatment/",
+      "permanent": true
+    },
+    {
+      "source": "/wastewater-effluent-treatment.html",
+      "destination": "/wastewater-effluent-treatment/",
+      "permanent": true
+    },
+    {
+      "source": "/solid-waste-management.html",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/solid-waste-management",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/consulting.html",
+      "destination": "/consulting/",
+      "permanent": true
+    },
+    {
+      "source": "/training.html",
+      "destination": "/training/",
+      "permanent": true
+    },
+    {
+      "source": "/supply-installation-maintenance.html",
+      "destination": "/procurement-maintenance/",
+      "permanent": true
+    },
+    {
+      "source": "/supply-installation-maintenance",
+      "destination": "/procurement-maintenance/",
+      "permanent": true
+    },
+    {
+      "source": "/procurement-maintenance.html",
+      "destination": "/procurement-maintenance/",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about/",
+      "permanent": true
+    },
+    {
+      "source": "/services.html",
+      "destination": "/services/",
+      "permanent": true
+    },
+    {
+      "source": "/projects.html",
+      "destination": "/projects/",
+      "permanent": true
+    },
+    {
+      "source": "/faq.html",
+      "destination": "/faq/",
+      "permanent": true
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/privacy/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/consultancy-services",
+      "destination": "/consulting/",
+      "permanent": true
+    }
+  ]
+}

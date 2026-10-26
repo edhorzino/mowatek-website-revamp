@@ -99,6 +99,10 @@ p{margin:0 0 1em;color:var(--muted)}.lead{font-size:1.18rem}.muted{color:var(--m
 .marquee-group{list-style:none;display:flex;margin:0;padding:0;flex:none}.marquee-group li{flex:none;padding:0 28px}
 .partner{display:flex;align-items:center;justify-content:center;min-width:180px;height:72px;padding:0 24px;border-radius:14px;border:1px solid var(--line);background:#fff;transition:box-shadow .2s,border-color .2s}.partner:hover{box-shadow:var(--shadow);border-color:var(--sky)}.partner img{height:40px;width:auto;max-width:160px;object-fit:contain}.partner-name{font:800 1.15rem var(--head);color:var(--navy);letter-spacing:-.02em}
 @keyframes scroll{to{transform:translateX(-50%)}}
+.client-controls{display:flex;justify-content:center;gap:10px;margin:-10px 0 22px}.client-controls .btn{min-width:44px}
+.client-track{list-style:none;display:flex;gap:22px;overflow-x:auto;margin:0;padding:6px 4px 18px;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:var(--blue) var(--paper)}
+.client-track li{flex:0 0 220px}.client-logo{height:118px;min-width:0;padding:14px}.client-logo img{width:180px;height:88px;max-width:100%;object-fit:contain}
+.contact-fallback{display:block}.contact-fallback .btn{display:block;margin:12px 0}.fcontact a{overflow-wrap:anywhere}
 .footer{background:var(--navy-950);color:#c4d6e8;padding:64px 0 24px}.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:44px;padding-bottom:40px}.footer h3{color:#fff;font-size:1rem;letter-spacing:0;margin-bottom:16px}.footer p{color:#a9bdd2;font-size:.94rem}
 .footer-logo{background:#fff;border-radius:12px;padding:10px 14px;display:inline-block;margin-bottom:16px}.footer-logo img{width:190px;height:auto}
 .flinks,.fcontact{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:10px;font-size:.94rem}.flinks a:hover,.fcontact a:hover,.social a:hover{color:var(--yellow)}.fcontact li{display:flex;gap:10px;align-items:flex-start}.fcontact .ico{color:var(--yellow);margin-top:3px}

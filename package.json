@@ -2,17 +2,19 @@
   "name": "mowatek-website",
   "version": "1.0.0",
   "private": true,
-  "description": "Static website for Mowatek Nigeria Limited. No runtime or build dependencies beyond Node 18+.",
+  "description": "Mowatek static website with a Vercel enquiry API and Resend email delivery.",
   "type": "module",
   "engines": {
-    "node": ">=18"
+    "node": "22.x"
   },
   "scripts": {
     "build": "node build.mjs",
     "serve": "node tools/serve.mjs",
     "check": "node tools/check.mjs",
     "images": "python3 tools/optimize-images.py",
-    "test": "node build.mjs && node tools/check.mjs"
+    "test": "node build.mjs && node tools/check.mjs && node --test tools/quote.test.mjs",
+    "configure:hosting": "node tools/configure-hosting.mjs",
+    "test:api": "node --test tools/quote.test.mjs"
   },
   "dependencies": {
     "resend": "^6.34.1"

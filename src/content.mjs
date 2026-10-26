@@ -1,6 +1,6 @@
 // All editable copy lives here. Only facts supplied by Mowatek are stated as facts:
 // incorporated in Nigeria in 1983 as a limited liability company; mandate spanning mechanical, electrical,
-// civil and marine works; strong focus on water and wastewater treatment; six service areas.
+// civil and marine works; strong focus on water and wastewater treatment; five service areas.
 // Capability lists describe service scope in neutral terms and must be confirmed by Mowatek (see LAUNCH-CHECKLIST.md).
 
 // Photo focal points (object-position) and visual-only alt text. Confirm project context before adding captions.
@@ -29,7 +29,7 @@ export const photos = {
   '92': { alt: 'Colleagues in hard hats and safety vests at a building site', pos: '50% 40%' },
 };
 
-export const services = [
+const serviceDefinitions = [
   {
     slug: 'water-treatment', nav: 'Water Treatment', title: 'Water Treatment', num: '01', tag: 'Water',
     icon: 'drop', hero: '41', cardPhoto: '41', gallery: ['29', '43', '41'],
@@ -53,13 +53,13 @@ export const services = [
     apps: ['Industrial and process water', 'Commercial and institutional buildings', 'Boreholes and other private water sources', 'Equipment protection and feed-water preparation'],
   },
   {
-    slug: 'waste-water-sewage-treatment', nav: 'Wastewater & Sewage', title: 'Wastewater & Sewage Treatment', num: '02', tag: 'Wastewater',
+    slug: 'wastewater-effluent-treatment', nav: 'Wastewater/Effluent Treatment', title: 'Wastewater/Effluent Treatment', num: '02', tag: 'Wastewater',
     icon: 'wave', hero: '82', cardPhoto: '16', gallery: ['58', '18', '13'],
-    card: 'Engineering support for wastewater and sewage treatment, process systems and site installations.',
-    meta: 'Wastewater and sewage treatment engineering in Nigeria: process systems, tanks, pipework and site installations from Mowatek Nigeria Limited.',
-    lead: 'Engineering support for wastewater and sewage treatment, from process selection through site installation.',
+    card: 'Engineering support for wastewater and effluent treatment, process systems and site installations.',
+    meta: 'Wastewater/effluent treatment engineering in Nigeria: process systems, tanks, pipework and site installations from Mowatek Nigeria Limited.',
+    lead: 'Engineering support for wastewater and effluent treatment, from process selection through site installation.',
     intro: [
-      'Treating wastewater and sewage responsibly takes sound process design and careful site delivery. Mowatek provides engineering support across treatment systems, tanks, pipework and the installations that connect them.',
+      'Treating wastewater and effluent responsibly takes sound process design and careful site delivery. Mowatek provides engineering support across treatment systems, tanks, pipework and the installations that connect them.',
       'We work around the realities of each site and bring in technical partners where appropriate to find a dependable way forward.',
     ],
     coverTitle: 'Areas we cover',
@@ -75,41 +75,19 @@ export const services = [
     apps: ['Industrial and commercial facilities', 'Residential and mixed-use developments', 'Existing treatment plants needing upgrade or repair', 'Tanks, chambers and pump installations'],
   },
   {
-    slug: 'solid-waste-management', nav: 'Environmental & Solid Waste', title: 'Environmental & Solid Waste Management', num: '03', tag: 'Environment',
-    icon: 'recycle', hero: '67', cardPhoto: '49', gallery: ['45', '71', '46'],
-    card: 'Practical approaches to waste management and environmental and pollution-control challenges.',
-    meta: 'Solid waste management and environmental control services in Nigeria: collection, segregation, safe handling and site clean-up support from Mowatek Nigeria Limited.',
-    lead: 'Practical approaches to waste management and to environmental and pollution-control challenges.',
-    intro: [
-      'Good waste management protects people, equipment and the environment. Mowatek supports clients with practical approaches to handling, segregating and managing waste, and to controlling environmental risks on site.',
-      'Safe working practice is central: our field work is planned around site safety requirements and the protective equipment each task demands.',
-    ],
-    coverTitle: 'Areas we cover',
-    covers: [
-      ['trash', 'Collection & segregation', 'Systems for collecting and separating waste streams at source.'],
-      ['recycle', 'Recycling & recovery', 'Approaches to recovering material value from suitable waste streams.'],
-      ['layers', 'Organic waste', 'Handling and processing options for organic waste.'],
-      ['shield', 'Safe handling & disposal', 'Procedures and equipment for handling and disposing of waste safely.'],
-      ['drop', 'Pollution control', 'Support for controlling spills, residues and other pollution risks.'],
-      ['clipboard', 'Compliance support', 'Help organising work so that site and regulatory requirements are met.'],
-    ],
-    appsTitle: 'Typical applications',
-    apps: ['Industrial sites and facilities', 'Tank and chamber cleaning support', 'Commercial premises', 'Environmental clean-up and control tasks'],
-  },
-  {
-    slug: 'consulting', nav: 'Consulting', title: 'Engineering Consulting', num: '04', tag: 'Advisory',
+    slug: 'consulting', nav: 'Consulting', title: 'Consulting', num: '04', tag: 'Advisory',
     icon: 'chart', hero: '84', cardPhoto: '04', gallery: ['56', '84', '04'],
     card: 'Technical guidance and problem-solving support informed by operational realities.',
-    meta: 'Engineering consulting for water, wastewater and environmental projects in Nigeria: feasibility, design review and process optimisation from Mowatek Nigeria Limited.',
+    meta: 'Engineering consulting for water and wastewater projects in Nigeria: feasibility, design review and process optimisation from Mowatek Nigeria Limited.',
     lead: 'Technical guidance and problem-solving support informed by operational realities.',
     intro: [
-      'Sound decisions early save cost and time later. Mowatek provides independent-minded technical guidance on water, wastewater and environmental projects, grounded in how systems actually operate on site.',
+      'Sound decisions early save cost and time later. Mowatek provides independent-minded technical guidance on water and wastewater projects, grounded in how systems actually operate on site.',
       'Whether you are weighing options, reviewing a design or trying to improve an existing system, we focus on a clear, fit-for-purpose way forward.',
     ],
     coverTitle: 'Areas we cover',
     covers: [
       ['search', 'Feasibility studies', 'Assessing technical and practical viability before a project commits.'],
-      ['layers', 'Master planning', 'Longer-term planning for water, wastewater and waste infrastructure.'],
+      ['layers', 'Master planning', 'Longer-term planning for water and wastewater infrastructure.'],
       ['clipboard', 'Design review', 'Technical review of proposed designs and specifications.'],
       ['gear', 'Process optimisation', 'Looking at existing systems for ways to improve performance.'],
       ['shield', 'Regulatory support', 'Help understanding and organising work around regulatory requirements.'],
@@ -119,20 +97,20 @@ export const services = [
     apps: ['Choosing between treatment options', 'Reviewing contractor or vendor proposals', 'Troubleshooting underperforming systems', 'Planning upgrades and expansions'],
   },
   {
-    slug: 'training', nav: 'Training', title: 'Training & Technical Support', num: '05', tag: 'Capability',
+    slug: 'training', nav: 'Training', title: 'Training', num: '05', tag: 'Capability',
     icon: 'cap', hero: '56', cardPhoto: '56', gallery: ['02', '92', '91'],
     card: 'Build practical understanding and support the people responsible for systems and equipment.',
-    meta: 'Technical training for water, wastewater and waste management teams in Nigeria from Mowatek Nigeria Limited. Enquire about on-site or workshop training.',
+    meta: 'Technical training for water and wastewater treatment teams in Nigeria from Mowatek Nigeria Limited. Enquire about on-site or workshop training.',
     lead: 'Build practical understanding and support the people responsible for systems and equipment.',
     intro: [
-      'Systems perform best when the people operating them understand how they work. Mowatek provides technical training and support for teams responsible for water, wastewater and waste management equipment.',
+      'Systems perform best when the people operating them understand how they work. Mowatek provides technical training and support for teams responsible for water and wastewater treatment equipment.',
       'Training content and format are agreed through an enquiry so that they fit your equipment, your site and your team.',
     ],
     coverTitle: 'Topics',
     covers: [
       ['drop', 'Water treatment operations', 'Operating, monitoring and troubleshooting water treatment equipment.'],
       ['wave', 'Wastewater management', 'Understanding wastewater processes and day-to-day operation.'],
-      ['recycle', 'Solid waste management', 'Good practice in handling and managing waste.'],
+      ['wrench', 'Equipment maintenance', 'Routine checks and maintenance practice for treatment equipment.'],
       ['flask', 'Laboratory & analysis', 'Sampling and testing fundamentals that support operations.'],
       ['shield', 'Safety & compliance', 'Safe working practice around treatment equipment and sites.'],
       ['users', 'Supervision & management', 'Supporting the people who lead operating teams.'],
@@ -141,7 +119,7 @@ export const services = [
     apps: ['On-site training at your facility', 'Workshops for groups', 'Support alongside equipment handover', 'Custom content: discuss your requirements'],
   },
   {
-    slug: 'supply-installation-maintenance', nav: 'Supply & Maintenance', title: 'Supply, Installation & Maintenance', num: '06', tag: 'Delivery',
+    slug: 'procurement-maintenance', nav: 'Procurement & Maintenance', title: 'Procurement & Maintenance', num: '06', tag: 'Delivery',
     icon: 'wrench', hero: '43', cardPhoto: '43', gallery: ['01', '13', '20'],
     card: 'Equipment supply and technical services to help systems perform as intended.',
     meta: 'Water and wastewater equipment supply, installation and maintenance in Nigeria: pumps, filtration, disinfection, controls, tanks and valves from Mowatek Nigeria Limited.',
@@ -164,6 +142,8 @@ export const services = [
   },
 ];
 
+export const services = ['water-treatment', 'wastewater-effluent-treatment', 'procurement-maintenance', 'consulting', 'training'].map((slug, i) => ({ ...serviceDefinitions.find(s => s.slug === slug), num: String(i + 1).padStart(2, '0') }));
+
 export const process = [
   ['Understand', 'We start with your site, your constraints and what you need the system to achieve.'],
   ['Define', 'We help shape a fit-for-purpose approach, with technical partners where appropriate.'],
@@ -172,11 +152,11 @@ export const process = [
 ];
 
 export const faqs = [
-  ['What does Mowatek do?', 'Mowatek Nigeria Limited provides engineering and technical services across six areas: water treatment, wastewater and sewage treatment, environmental and solid waste management, engineering consulting, training and technical support, and equipment supply, installation and maintenance.'],
+  ['What does Mowatek do?', 'Mowatek Nigeria Limited provides engineering and technical services across five areas: water treatment, wastewater/effluent treatment, procurement and maintenance, consulting, and training.'],
   ['How long has Mowatek been operating?', 'Mowatek was incorporated in Nigeria in 1983 as a limited liability company, with a mandate spanning mechanical, electrical, civil and marine works. Over the years it has focused strongly on water and wastewater treatment.'],
   ['How do I request a quote?', 'Use the enquiry form and choose the service you are interested in. Tell us about your site and what you need, and the team will follow up to discuss your requirements.'],
   ['What should I include in an enquiry?', 'The more context the better: your location, the type of water or effluent involved, approximate volumes, any existing equipment, your timeline and any quality or regulatory targets you need to meet.'],
-  ['Do you supply equipment only, or also install and maintain it?', 'Supply, installation and maintenance is one of our six service areas. The scope is agreed per project, so you can ask for a single element or a complete installation.'],
+  ['Do you supply equipment only, or also install and maintain it?', 'Procurement and maintenance is one of our five service areas, including installation and commissioning support. The scope is agreed per project, so you can ask for a single element or a complete installation.'],
   ['Can you advise before we commit to a solution?', 'Yes. Our consulting service covers areas such as feasibility studies, design review and process optimisation, so that you can make decisions with clearer technical information.'],
   ['Do you work with other companies?', 'We work with technical partners where appropriate, to help clients find a fit-for-purpose way forward.'],
   ['Can you train our operating team?', 'Training and technical support is one of our services. Content and format are discussed through an enquiry so that they suit your equipment and site.'],

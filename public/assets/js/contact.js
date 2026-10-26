@@ -9,6 +9,7 @@
   const getEndpoint = () => (form.dataset.endpoint || '').trim();
   const minMs = (Number(form.dataset.minSeconds) || 0) * 1000;
   const loadedAt = Date.now();
+  $('f-started-at').value = String(loadedAt);
 
   const btn = $('submitBtn');
   const lbl = btn.querySelector('.lbl');
@@ -19,11 +20,12 @@
   let busy = false;
 
   // Email fallback for failed online submissions.
-  const contactEmail = 'info@mowatek.com';
+  const contactEmail = form.dataset.contactEmail || 'info@mowatek.com';
 
   // Preselect service / intent from the URL.
   const q = new URLSearchParams(location.search);
-  const svc = q.get('service');
+  const oldServices = { 'waste-water-sewage-treatment': 'wastewater-effluent-treatment', 'supply-installation-maintenance': 'procurement-maintenance', 'solid-waste-management': 'general' };
+  const svc = oldServices[q.get('service')] || q.get('service');
 
   if (
     svc &&
@@ -117,7 +119,10 @@
 
   // Show a polished fallback with a copyable email address.
   function showContactFallback() {
-    errBox.replaceChildren();
+    errText.textContent = '';
+    const details = document.createElement('span');
+    details.className = 'contact-fallback';
+    errText.append(details);
 
     const heading = document.createElement('strong');
     heading.textContent =
@@ -136,6 +141,7 @@
 
     const copyButton = document.createElement('button');
     copyButton.type = 'button';
+    copyButton.className = 'btn btn--ghost btn--sm';
     copyButton.textContent = 'Copy email address';
 
     copyButton.addEventListener('click', async () => {
@@ -147,8 +153,7 @@
         const temporaryInput = document.createElement('input');
         temporaryInput.value = contactEmail;
         temporaryInput.readOnly = true;
-        temporaryInput.style.position = 'absolute';
-        temporaryInput.style.left = '-9999px';
+        temporaryInput.className = 'sr';
 
         document.body.appendChild(temporaryInput);
         temporaryInput.select();
@@ -173,7 +178,7 @@
     note.textContent =
       'Your enquiry has not been submitted. Please contact us by email instead.';
 
-    errBox.append(heading, message, emailLabel, emailLink, copyButton, note);
+    details.append(heading, message, emailLabel, emailLink, copyButton, note);
     errBox.hidden = false;
     errBox.focus();
   }
@@ -237,9 +242,10 @@
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
-        body: new FormData(form),
+        body: JSON.stringify(Object.fromEntries(new FormData(form))),
         headers: {
           Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
         signal: controller.signal,
       });
@@ -252,17 +258,7 @@
         // The server did not return JSON.
       }
 
-      const success =
-        response.ok &&
-        !(
-          data &&
-          (
-            data.ok === false ||
-            data.success === false ||
-            data.error ||
-            data.errors
-          )
-        );
+      const success = response.ok && data?.success === true && typeof data.id === 'string' && data.id.length > 0;
 
       if (!success) {
         showContactFallback();
@@ -286,6 +282,10 @@
     ok.hidden = true;
     form.hidden = false;
     $('form-title').hidden = false;
+    $('f-started-at').value = String(Date.now() - minMs);
+    $('f-intent').value = q.get('intent') === 'quote' ? 'quote' : 'enquiry';
+    lbl.textContent = $('f-intent').value === 'quote' ? 'Request quote' : 'Send enquiry';
+    if (svc && [...$('f-service').options].some((o) => o.value === svc)) $('f-service').value = svc;
     fieldOf('name').focus();
   });
 })();

@@ -1,15 +1,19 @@
 {
   "_readme": "Fill in the empty values, then run `npm run build`. Empty values are never rendered on the site. Nothing here should contain secrets: the form endpoint is a public URL.",
-  "siteUrl": "",
+  "siteUrl": "https://mowatek.com",
   "companyName": "Mowatek Nigeria Limited",
   "tagline": "Water & Wastewater Engineering",
   "foundingYear": 1983,
   "contact": {
-    "email": "",
+    "email": "info@mowatek.com",
     "phone": "",
     "whatsapp": "",
     "whatsappMessage": "Hello Mowatek, I would like to make an enquiry.",
-    "addressLines": [],
+    "addressLines": [
+      "35, Ajose Street",
+      "Off Lawanson, Surulere",
+      "Lagos, Nigeria"
+    ],
     "openingHours": "",
     "rcNumber": ""
   },
@@ -38,15 +42,98 @@
   },
   "partners": [
     {
-      "name": "Jet Incorp",
-      "url": "https://jetincorp.com",
-      "logo": ""
+      "name": "NOV",
+      "url": "https://www.nov.com",
+      "logo": "nov.svg"
     },
     {
-      "name": "NOV",
-      "url": "https://nov.com",
-      "logo": ""
+      "name": "Jet Incorporated",
+      "url": "https://jetincorp.com",
+      "logo": "jet-incorporated.png"
+    },
+    {
+      "name": "Cerafiltec",
+      "url": "https://www.cerafiltec.com",
+      "logo": "cerafiltec.svg"
     }
   ],
-  "testimonials": []
+  "testimonials": [],
+  "clients": [
+    {
+      "name": "Akwa Ibom State Government",
+      "logo": "akwa-ibom-state-government.jpeg"
+    },
+    {
+      "name": "Bouygues Construction",
+      "logo": "bouygues-construction.jpeg"
+    },
+    {
+      "name": "Cadbury",
+      "logo": "cadbury.jpeg"
+    },
+    {
+      "name": "CCECC",
+      "logo": "ccecc.jpeg"
+    },
+    {
+      "name": "Central Bank of Nigeria",
+      "logo": "central-bank-of-nigeria.jpeg"
+    },
+    {
+      "name": "Dangote",
+      "logo": "dangote.jpeg"
+    },
+    {
+      "name": "ExxonMobil",
+      "logo": "exxonmobil.jpeg"
+    },
+    {
+      "name": "FMN",
+      "logo": "fmn.jpeg"
+    },
+    {
+      "name": "Greenville LNG",
+      "logo": "greenville-lng.jpeg"
+    },
+    {
+      "name": "GTCO",
+      "logo": "gtco.jpeg"
+    },
+    {
+      "name": "Lagos State Government",
+      "logo": "lagos-state-government.jpeg"
+    },
+    {
+      "name": "Le Méridien",
+      "logo": "le-meridien.jpeg"
+    },
+    {
+      "name": "Nestoil",
+      "logo": "nestoil.jpeg"
+    },
+    {
+      "name": "NLNG",
+      "logo": "nlng.jpeg"
+    },
+    {
+      "name": "Seplat Energy",
+      "logo": "seplat-energy.jpeg"
+    },
+    {
+      "name": "Shell",
+      "logo": "shell.jpeg"
+    },
+    {
+      "name": "Sheraton",
+      "logo": "sheraton.jpeg"
+    },
+    {
+      "name": "Stanbic IBTC",
+      "logo": "stanbic-ibtc.jpeg"
+    },
+    {
+      "name": "The Punch",
+      "logo": "the-punch.jpeg"
+    }
+  ]
 }
