@@ -30,7 +30,7 @@ p{margin:0 0 1em;color:var(--muted)}.lead{font-size:1.18rem}.muted{color:var(--m
 /* header */
 .header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:var(--hh)}
-.brand img{width:190px;height:auto}
+.brand img{width:64px;height:64px;object-fit:contain}
 .site-nav ul{list-style:none;margin:0;padding:0;display:flex;align-items:center;gap:6px}
 .site-nav a:not(.btn){display:block;padding:10px 12px;font:700 .95rem var(--head);color:var(--ink);border-radius:8px;position:relative}
 .site-nav a:not(.btn):hover{color:var(--blue)}
@@ -104,7 +104,7 @@ p{margin:0 0 1em;color:var(--muted)}.lead{font-size:1.18rem}.muted{color:var(--m
 .client-track li{flex:0 0 220px}.client-logo{height:118px;min-width:0;padding:14px}.client-logo img{width:180px;height:88px;max-width:100%;object-fit:contain}
 .contact-fallback{display:block}.contact-fallback .btn{display:block;margin:12px 0}.fcontact a{overflow-wrap:anywhere}
 .footer{background:var(--navy-950);color:#c4d6e8;padding:64px 0 24px}.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:44px;padding-bottom:40px}.footer h3{color:#fff;font-size:1rem;letter-spacing:0;margin-bottom:16px}.footer p{color:#a9bdd2;font-size:.94rem}
-.footer-logo{background:#fff;border-radius:12px;padding:10px 14px;display:inline-block;margin-bottom:16px}.footer-logo img{width:190px;height:auto}
+.footer-logo{background:#fff;border-radius:12px;padding:10px 14px;display:inline-block;margin-bottom:16px}.footer-logo img{width:70px;height:70px;object-fit:contain}
 .flinks,.fcontact{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:10px;font-size:.94rem}.flinks a:hover,.fcontact a:hover,.social a:hover{color:var(--yellow)}.fcontact li{display:flex;gap:10px;align-items:flex-start}.fcontact .ico{color:var(--yellow);margin-top:3px}
 .copyright{border-top:1px solid rgba(255,255,255,.12);padding-top:20px;font-size:.84rem;color:#92a9c0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .fab{position:fixed;right:18px;bottom:18px;z-index:40;display:flex;align-items:center;gap:8px;background:#1faa59;color:#fff;font:800 .9rem var(--head);padding:12px 18px;border-radius:99px;box-shadow:0 10px 30px rgba(0,0,0,.25)}.fab .ico{width:22px;height:22px}
@@ -131,7 +131,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);bo
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1!important;transform:none!important}.slide:not(.s1){display:none}.marquee-track{width:auto;flex-wrap:wrap;justify-content:center}.marquee-group[aria-hidden=true]{display:none}.marquee-group{flex-wrap:wrap;justify-content:center;row-gap:12px}}
 /* responsive */
 @media (max-width:1020px){.nav-cta{display:none}.card-grid,.cap-grid,.cap-grid--3,.t-grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(3,1fr)}.footer-grid{grid-template-columns:1fr 1fr}.trust-grid{grid-template-columns:repeat(2,1fr)}.split,.split--text,.band,.contact-grid,.page-hero-grid{gap:40px}}
-@media (max-width:900px){:root{--hh:70px}.brand img{width:160px}.menu-btn{display:block}
+@media (max-width:900px){:root{--hh:70px}.brand img{width:56px;height:56px}.menu-btn{display:block}
 .site-nav{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 20px 30px rgba(8,38,76,.12);max-height:0;overflow:hidden;visibility:hidden;transition:max-height .3s,visibility .3s}.site-nav.open{max-height:calc(100vh - var(--hh));overflow:auto;visibility:visible}
 .site-nav ul{flex-direction:column;align-items:stretch;padding:12px 20px 22px;gap:0}.site-nav a:not(.btn){padding:14px 4px;border-bottom:1px solid var(--line);border-radius:0}.site-nav a[aria-current=page]:not(.btn)::after{display:none}
 .has-sub{flex-wrap:wrap}.has-sub>a{flex:1}.sub-toggle{margin:0;padding:12px}.sub{position:static!important;width:100%;opacity:1;visibility:visible;transform:none;border:0;box-shadow:none;padding:0 0 0 14px!important;display:none!important}.sub-toggle[aria-expanded=true]+.sub{display:flex!important}.has-sub:hover .sub{display:none!important}.has-sub:hover .sub-toggle[aria-expanded=true]+.sub{display:flex!important}

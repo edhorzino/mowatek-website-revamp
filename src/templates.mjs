@@ -108,7 +108,7 @@ export function header(ctx, active = '') {
   const links = nav(ctx).map(([p, l]) => `<li><a href="${ctx.href(p)}"${active === p.replace('/', '') ? ' aria-current="page"' : ''}>${l}</a></li>`);
   return `<a class="skip" href="#main">Skip to content</a>
 <header class="header" id="top"><div class="container nav">
-<a class="brand" href="${ctx.href('')}" aria-label="${esc(ctx.config.companyName)}: home"><img src="${ctx.href('assets/img/logo-360.webp')}" srcset="${ctx.href('assets/img/logo-360.webp')} 360w, ${ctx.href('assets/img/logo-720.webp')} 720w" sizes="190px" width="360" height="131" alt="${esc(ctx.config.companyName)}: ${esc(ctx.config.tagline)}"></a>
+<a class="brand" href="${ctx.href('')}" aria-label="${esc(ctx.config.companyName)}: home"><img src="${ctx.href('assets/img/logo-360.webp')}" srcset="${ctx.href('assets/img/logo-360.webp')} 360w, ${ctx.href('assets/img/logo-720.webp')} 720w" sizes="70px" width="360" height="360" alt="${esc(ctx.config.companyName)}: ${esc(ctx.config.tagline)}"></a>
 <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">${icon('menu', 'ico ico--open')}${icon('x', 'ico ico--close')}</button>
 <nav class="site-nav" id="siteNav" aria-label="Main"><ul>
 <li><a href="${ctx.href('')}"${active === 'home' ? ' aria-current="page"' : ''}>Home</a></li>
@@ -130,7 +130,7 @@ export function footer(ctx) {
   const soc = Object.entries(config.social).filter(([k, v]) => v && !k.startsWith('_')).map(([k, v]) => `<a href="${esc(v)}" target="_blank" rel="noopener noreferrer">${k === 'x' ? 'X' : k[0].toUpperCase() + k.slice(1)}</a>`);
   return `<footer class="footer"><div class="container">
 <div class="footer-grid">
-<div><div class="footer-logo"><img src="${ctx.href('assets/img/logo-360.webp')}" width="360" height="131" loading="lazy" alt="${esc(config.companyName)}"></div>
+<div><div class="footer-logo"><img src="${ctx.href('assets/img/logo-360.webp')}" width="360" height="360" loading="lazy" alt="${esc(config.companyName)}"></div>
 <p>Engineering, procurement, construction, operations and maintenance for water and wastewater treatment.</p>${soc.length ? `<p class="social">${soc.join(' · ')}</p>` : ''}</div>
 <div><h3>Services</h3><ul class="flinks">${services.map((s) => `<li><a href="${ctx.href(s.slug + '/')}">${esc(s.nav)}</a></li>`).join('')}</ul></div>
 <div><h3>Company</h3><ul class="flinks"><li><a href="${ctx.href('about/')}">About</a></li><li><a href="${ctx.href('projects/')}">Projects</a></li><li><a href="${ctx.href('faq/')}">FAQ</a></li><li><a href="${ctx.href('contact/')}">Contact</a></li><li><a href="${ctx.href('privacy/')}">Privacy</a></li></ul></div>
