@@ -144,7 +144,7 @@ ${ctaBand(ctx, { title: 'Have a similar requirement?' })}`;
   for (const k of ['email', 'phone', 'whatsapp']) if (!c[k]) warnings.push(`contact.${k} is empty: related links and buttons are hidden.`);
   if (!c.addressLines?.length) warnings.push('contact.addressLines is empty: address hidden.');
   const direct = [
-    contacts.phone && `<li>${icon('phone', 'ico ico--lg')}<div><strong>Call</strong><a href="${contacts.phone.href}">${esc(contacts.phone.label)}</a></div></li>`,
+    ...contacts.phones.map(p => `<li>${icon('phone', 'ico ico--lg')}<div><strong>Call</strong><a href="${p.href}">${esc(p.label)}</a></div></li>`),
     contacts.whatsapp && `<li>${icon('chat', 'ico ico--lg')}<div><strong>WhatsApp</strong><a href="${contacts.whatsapp.href}" target="_blank" rel="noopener noreferrer">Start a chat<span class="sr"> (opens in a new tab)</span></a></div></li>`,
     contacts.email && `<li>${icon('mail', 'ico ico--lg')}<div><strong>Email</strong><a href="${contacts.email.href}">${esc(contacts.email.label)}</a></div></li>`,
     contacts.address && `<li>${icon('pin', 'ico ico--lg')}<div><strong>Address</strong><span>${contacts.address.map(esc).join('<br>')}</span></div></li>`,

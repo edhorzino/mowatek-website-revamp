@@ -1,6 +1,6 @@
 # Launch checks after this update
 
-- [ ] Add the phone number when Mowatek supplies it. WhatsApp is optional and remains hidden until configured.
+- [x] Added both supplied phone numbers and the corrected address. WhatsApp remains optional and unconfigured.
 - [ ] Confirm RESEND_API_KEY is configured in the Vercel project and the sender domain quotes.mowatek.com is verified, or supply a verified QUOTE_FROM_EMAIL.
 - [ ] After deployment, send a real enquiry and confirm inbox delivery and all notification fields. The local tests use simulated provider responses.
 - [ ] Confirm Vercel uses the committed vercel.json, Node 22.x, build command npm run build and output directory dist.

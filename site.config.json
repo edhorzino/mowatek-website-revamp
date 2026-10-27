@@ -6,16 +6,20 @@
   "foundingYear": 1983,
   "contact": {
     "email": "info@mowatek.com",
-    "phone": "",
+    "phone": "+234 807 409 5025",
     "whatsapp": "",
     "whatsappMessage": "Hello Mowatek, I would like to make an enquiry.",
     "addressLines": [
       "35, Ajose Street",
-      "Off Lawanson, Surulere",
-      "Lagos, Nigeria"
+      "Off Jubril Martins Street",
+      "Surulere, Lagos",
+      "Nigeria"
     ],
     "openingHours": "",
-    "rcNumber": ""
+    "rcNumber": "",
+    "additionalPhones": [
+      "+234 803 205 8073"
+    ]
   },
   "social": {
     "linkedin": "",

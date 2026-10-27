@@ -5,7 +5,7 @@
 - Preserved the site's existing design, colours, fonts and page structures.
 - Replaced the service list with Water Treatment, Wastewater/Effluent Treatment, Procurement & Maintenance, Consulting and Training; updated navigation, cards, service pages, footer, form choices, FAQ and metadata.
 - Replaced About copy with the supplied EPCOM description, using five service areas to match the revised list.
-- Published info@mowatek.com and 35, Ajose Street, Off Lawanson, Surulere, Lagos, Nigeria. Phone and WhatsApp remain hidden pending supplied numbers.
+- Published info@mowatek.com and 35, Ajose Street, Off Jubril Martins Street, Surulere, Lagos, Nigeria. Published both phone numbers: +234 807 409 5025 and +234 803 205 8073. WhatsApp remains unconfigured.
 - Added NOV, Jet Incorporated and Cerafiltec logos from their official sites; see PARTNER-LOGOS.md.
 - Added 19 named client logos with automatic movement, previous/next controls, pause and reduced-motion support. The blank twentieth image is retained but excluded.
 - Fixed JSON form delivery, provider rejection handling, validation, spam checks, notification field loss and HTML escaping. Errors retain the enquiry and show the direct email fallback.
@@ -32,6 +32,6 @@ It includes the original source, public assets, dist and Git metadata; reinstall
 
 ## Remaining deployment checks
 
-Provide the phone number when available. Confirm Vercel's RESEND_API_KEY and a verified sender domain, then submit one real enquiry after deployment and confirm receipt. Configure a shared Vercel Firewall limit if needed; the code's request limit is per server instance. See LAUNCH-CHECKLIST.md.
+Confirm Vercel's RESEND_API_KEY and a verified sender domain, then submit one real enquiry after deployment and confirm receipt. Configure a shared Vercel Firewall limit if needed; the code's request limit is per server instance. See LAUNCH-CHECKLIST.md.
 
 No Git staging, commit, push or production deployment was performed.

@@ -12,9 +12,11 @@ export function ctxFor(config, path, extra = {}) {
   const rootAbs = !!extra.rootAbsolute; // used by 404.html which can be served from any path
   const href = (to = '') => (rootAbs ? '/' + to : up + to);
   const c = config.contact;
+  const phones = [c.phone, ...(c.additionalPhones || [])].filter(Boolean).map(label => ({label, href: `tel:+${digits(label).replace(/^2340/, '234')}`}));
   const contacts = {
     email: c.email ? { label: c.email, href: `mailto:${c.email}` } : null,
-    phone: c.phone ? { label: c.phone, href: `tel:+${digits(c.phone)}` } : null,
+    phone: phones[0] || null,
+    phones,
     whatsapp: c.whatsapp ? { label: 'WhatsApp', href: `https://wa.me/${digits(c.whatsapp)}?text=${encodeURIComponent(c.whatsappMessage || '')}` } : null,
     address: c.addressLines?.length ? c.addressLines : null,
   };
@@ -122,7 +124,7 @@ ${links.slice(1).join('\n')}
 export function footer(ctx) {
   const { config, contacts } = ctx;
   const items = [
-    contacts.phone && `<li>${icon('phone')}<a href="${contacts.phone.href}">${esc(contacts.phone.label)}</a></li>`,
+    ...contacts.phones.map(p => `<li>${icon('phone')}<a href="${p.href}">${esc(p.label)}</a></li>`),
     contacts.email && `<li>${icon('mail')}<a href="${contacts.email.href}">${esc(contacts.email.label)}</a></li>`,
     contacts.whatsapp && `<li>${icon('chat')}<a href="${contacts.whatsapp.href}" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a></li>`,
     contacts.address && `<li>${icon('pin')}<span>${contacts.address.map(esc).join('<br>')}</span></li>`,
@@ -223,7 +225,7 @@ export function orgJsonLd(ctx) {
   const o = { '@context': 'https://schema.org', '@type': 'Organization', name: config.companyName, foundingDate: String(config.foundingYear), description: 'Water and wastewater treatment, procurement, maintenance, consulting and training in Nigeria.', areaServed: 'NG' };
   if (config.siteUrl) { o.url = config.siteUrl; o.logo = config.siteUrl.replace(/\/$/, '') + '/assets/img/mark-512.png'; }
   if (contacts.email) o.email = config.contact.email;
-  if (contacts.phone) o.telephone = config.contact.phone;
+  if (contacts.phone) o.telephone = contacts.phones.map(p => p.label);
   if (contacts.address) o.address = { '@type': 'PostalAddress', streetAddress: config.contact.addressLines.join(', '), addressCountry: 'NG' };
   const sameAs = Object.values(config.social).filter((v) => v && String(v).startsWith('http')); if (sameAs.length) o.sameAs = sameAs;
   return o;
