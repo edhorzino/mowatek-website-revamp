@@ -32,6 +32,7 @@ export function vercelConfiguration(config) {
       { source: '/assets/(.*)', headers: [{ key: 'Cache-Control', value: 'public, max-age=0, must-revalidate' }] },
     ],
     redirects: [
+      { source: '/', has: [{ type: 'host', value: 'www.mowatek.com' }], destination: 'https://mowatek.com/', permanent: true },
       { source: '/:path*', has: [{ type: 'host', value: 'www.mowatek.com' }], destination: 'https://mowatek.com/:path*', permanent: true },
       ...legacyRedirects.map(([from, to]) => ({ source: '/' + from.replace(/\/$/, ''), destination: '/' + to, permanent: true })),
     ],

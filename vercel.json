@@ -46,6 +46,17 @@
   ],
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.mowatek.com"
+        }
+      ],
+      "destination": "https://mowatek.com/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
